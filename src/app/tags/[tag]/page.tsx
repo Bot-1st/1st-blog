@@ -20,8 +20,9 @@ export async function generateStaticParams() {
     });
   });
   
+  // 返回原始中文字符，让 Next.js 自动处理编码
   return Array.from(allTags).map(tag => ({
-    tag: encodeURIComponent(tag),
+    tag: tag,
   }));
 }
 
