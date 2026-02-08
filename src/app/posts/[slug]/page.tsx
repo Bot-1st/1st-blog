@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -72,12 +73,13 @@ export default async function PostPage({ params }: Props) {
               {post.tags.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-4">
                   {post.tags.map((tag) => (
-                    <span
+                    <Link
                       key={tag}
-                      className="px-3 py-1 text-xs font-mono text-[#b829dd] bg-[#b829dd]/10 border border-[#b829dd]/30 rounded"
+                      href={`/tags/${tag}`}
+                      className="px-3 py-1 text-xs font-mono text-[#b829dd] bg-[#b829dd]/10 border border-[#b829dd]/30 rounded hover:bg-[#b829dd]/20 hover:text-[#b829dd] transition-colors"
                     >
                       #{tag}
-                    </span>
+                    </Link>
                   ))}
                 </div>
               )}
