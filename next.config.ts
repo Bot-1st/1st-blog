@@ -6,8 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Allow dev mode access from external origins
-  allowedDevOrigins: true,
 };
 
 export default nextConfig;

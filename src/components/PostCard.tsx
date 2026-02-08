@@ -37,12 +37,13 @@ export default function PostCard({ post, index = 0 }: PostCardProps) {
               </time>
               
               {post.tags.slice(0, 3).map((tag) => (
-                <span
+                <Link
                   key={tag}
-                  className="text-xs text-[#b829dd]/80 bg-[#b829dd]/10 px-2 py-1 rounded border border-[#b829dd]/20"
+                  href={`/tags/${tag}`}
+                  className="text-xs text-[#b829dd]/80 bg-[#b829dd]/10 px-2 py-1 rounded border border-[#b829dd]/20 hover:bg-[#b829dd]/20 hover:text-[#b829dd] transition-colors"
                 >
                   #{tag}
-                </span>
+                </Link>
               ))}
             </div>
 
