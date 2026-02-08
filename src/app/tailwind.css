@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-card: #1a1a24;
+  --color-neon-cyan: #00f5ff;
+  --color-neon-purple: #b829dd;
+  --color-neon-pink: #ff00ff;
+  --color-text-primary: #e0e0e0;
+  --color-text-secondary: #a0a0a0;
+}

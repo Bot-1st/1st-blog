@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --font-geist-mono: var(--font-geist-mono);
+}
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-card: #1a1a24;
+  --neon-cyan: #00f5ff;
+  --neon-purple: #b829dd;
+  --neon-pink: #ff00ff;
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-geist-mono), "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(0, 245, 255, 0.3);
+  color: var(--neon-cyan);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-cyan), var(--neon-purple));
+  border-radius: 4px;
+}
+
+a {
+  color: var(--neon-cyan);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
+}
+
+code {
+  background: var(--bg-card);
+  color: var(--neon-cyan);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+pre {
+  background: var(--bg-card);
+  border: 1px solid var(--neon-cyan);
+  border-radius: 8px;
+  padding: 1em;
+  overflow-x: auto;
+  position: relative;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  display: block;
+  margin-top: 20px;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100vh); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.scanline {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  animation: scan 4s linear infinite;
+  opacity: 0.5;
+}
+
+.blink {
+  animation: blink 1s step-end infinite;
+}
+
+.glitch:hover {
+  animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+  color: var(--neon-pink);
+}

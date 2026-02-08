@@ -1,0 +1,10 @@
+[00:00:01.009] Server  LOG     ✓ Ready in 736ms
+[00:03:06.766] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:03:07.543] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:03:08.044] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:03:08.053] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:17:32.690] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:21:38.015] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:21:38.043] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:21:39.100] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
+[00:21:39.128] Server  ERROR   TypeError: (allowedDevOrigins || []) is not iterable
