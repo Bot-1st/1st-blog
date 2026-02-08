@@ -21,17 +21,18 @@ export async function generateStaticParams() {
   });
   
   return Array.from(allTags).map(tag => ({
-    tag: tag,
+    tag: encodeURIComponent(tag),
   }));
 }
 
 export default async function TagPage({ params }: TagPageProps) {
   const { tag } = await params;
+  const decodedTag = decodeURIComponent(tag);
   const posts = getAllPosts();
   
   // Filter posts by tag
   const filteredPosts = posts.filter(post => 
-    post.tags.includes(tag)
+    post.tags.includes(decodedTag)
   );
   
   if (filteredPosts.length === 0) {
@@ -45,6 +46,9 @@ export default async function TagPage({ params }: TagPageProps) {
       allTags.add(t);
     });
   });
+  
+  // Use decodedTag for display
+  const displayTag = decodedTag;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
@@ -76,7 +80,7 @@ export default async function TagPage({ params }: TagPageProps) {
         
         <h1 className="text-4xl font-bold mb-4">
           <span className="bg-gradient-to-r from-[#00f5ff] to-[#b829dd] bg-clip-text text-transparent">
-            #{tag}
+            #{displayTag}
           </span>
         </h1>
         
