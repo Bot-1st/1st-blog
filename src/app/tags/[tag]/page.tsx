@@ -61,12 +61,7 @@ export default async function TagPage({ params }: TagPageProps) {
           首页
         </Link>
         <span className="mx-2 text-[#00f5ff]/30">/</span>
-        <Link 
-          href="/tags" 
-          className="text-[#00f5ff]/70 hover:text-[#00f5ff] transition-colors"
-        >
-          标签
-        </Link>
+        <span className="text-[#00f5ff]/70">标签</span>
         <span className="mx-2 text-[#00f5ff]/30">/</span>
         <span className="text-[#e0e0e0]">#{tag}</span>
       </nav>
@@ -109,9 +104,9 @@ export default async function TagPage({ params }: TagPageProps) {
               {Array.from(allTags).sort().map(t => (
                 <Link
                   key={t}
-                  href={`/tags/${t}`}
+                  href={`/tags/${encodeURIComponent(t)}`}
                   className={`text-xs px-3 py-1.5 rounded-full border transition-all duration-300 ${
-                    t === tag
+                    t === decodedTag
                       ? 'bg-[#b829dd]/30 text-[#b829dd] border-[#b829dd]/50'
                       : 'bg-[#00f5ff]/5 text-[#00f5ff]/70 border-[#00f5ff]/20 hover:bg-[#00f5ff]/10 hover:border-[#00f5ff]/40'
                   }`}
