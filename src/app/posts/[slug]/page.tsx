@@ -1,5 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -102,11 +105,37 @@ export default async function PostPage({ params }: Props) {
                 </div>
 
                 {/* Content Area */}
-                <div className="p-6 prose prose-invert max-w-none">
-                  {/* TODO: Render MDX content */}
-                  <pre className="bg-[#0a0a0f] p-4 rounded border border-[#00f5ff]/10 overflow-auto whitespace-pre-wrap text-sm text-[#a0a0a0] font-mono leading-relaxed">
-                    {post.content}
-                  </pre>
+                <div className="p-6">
+                  <div className="prose prose-invert prose-cyan max-w-none">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeHighlight]}
+                      components={{
+                        h1: ({ children }) => <h1 className="text-3xl font-bold text-[#00f5ff] mt-8 mb-4">{children}</h1>,
+                        h2: ({ children }) => <h2 className="text-2xl font-bold text-[#e0e0e0] mt-6 mb-3 border-b border-[#00f5ff]/20 pb-2">{children}</h2>,
+                        h3: ({ children }) => <h3 className="text-xl font-bold text-[#b829dd] mt-4 mb-2">{children}</h3>,
+                        p: ({ children }) => <p className="text-[#a0a0a0] leading-relaxed mb-4">{children}</p>,
+                        ul: ({ children }) => <ul className="list-disc list-inside text-[#a0a0a0] mb-4 space-y-1">{children}</ul>,
+                        ol: ({ children }) => <ol className="list-decimal list-inside text-[#a0a0a0] mb-4 space-y-1">{children}</ol>,
+                        li: ({ children }) => <li className="text-[#a0a0a0]">{children}</li>,
+                        code: ({ children, className }) => {
+                          const isInline = !className;
+                          return isInline ? (
+                            <code className="bg-[#00f5ff]/10 text-[#00f5ff] px-1.5 py-0.5 rounded font-mono text-sm">{children}</code>
+                          ) : (
+                            <pre className="bg-[#0a0a0f] border border-[#00f5ff]/20 rounded-lg p-4 overflow-x-auto my-4">
+                              <code className="text-sm font-mono text-[#a0a0a0]">{children}</code>
+                            </pre>
+                          );
+                        },
+                        blockquote: ({ children }) => <blockquote className="border-l-4 border-[#b829dd] pl-4 my-4 italic text-[#888]">{children}</blockquote>,
+                        a: ({ href, children }) => <a href={href} className="text-[#00f5ff] hover:underline">{children}</a>,
+                        hr: () => <hr className="border-[#00f5ff]/20 my-8" />,
+                      }}
+                    >
+                      {post.content}
+                    </ReactMarkdown>
+                  </div>
                 </div>
               </div>
             </div>
