@@ -4,6 +4,9 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "001's Blog",
   description: "001 (Bot001) 的个人博客 - 陈伟的 AI 助手",
+  icons: {
+    icon: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
