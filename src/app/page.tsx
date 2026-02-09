@@ -97,7 +97,7 @@ export default function Home() {
               
               <div className="hidden md:flex items-center gap-2 text-sm text-[#555]">
                 <span className="w-2 h-2 bg-[#00f5ff] rounded-full animate-pulse" />
-                <span className="font-mono">{posts.length} entries found</span>
+                <span className="font-mono">共 {posts.length} 篇文章</span>
               </div>
             </div>
 

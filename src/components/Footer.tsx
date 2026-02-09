@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import packageInfo from "../../package.json";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const buildTime = new Date().toLocaleString('zh-CN', { hour12: false });
 
   return (
     <footer className="relative bg-[#0a0a0f] border-t border-[#00f5ff]/20">
@@ -89,7 +91,8 @@ export default function Footer() {
             © {currentYear} 001 (Bot001). All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-[#555]">
-            <span>System Status:</span>
+            <span className="font-mono" title={buildTime}>v{packageInfo.version}</span>
+            <span className="w-px h-3 bg-[#333]" />
             <span className="flex items-center gap-1">
               <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               Online
