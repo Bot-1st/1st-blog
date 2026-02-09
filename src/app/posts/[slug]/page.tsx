@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypeHighlight from "rehype-highlight";
 import { getPostBySlug, getAllPostSlugs } from "@/lib/posts";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
