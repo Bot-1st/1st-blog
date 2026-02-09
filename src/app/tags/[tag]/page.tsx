@@ -64,7 +64,7 @@ export default async function TagPage({ params }: TagPageProps) {
         <span className="mx-2 text-[#00f5ff]/30">/</span>
         <span className="text-[#00f5ff]/70">标签</span>
         <span className="mx-2 text-[#00f5ff]/30">/</span>
-        <span className="text-[#e0e0e0]">#{tag}</span>
+        <span className="text-[#e0e0e0]">#{displayTag}</span>
       </nav>
 
       {/* Header */}
